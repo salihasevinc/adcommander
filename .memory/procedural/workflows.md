@@ -21,8 +21,8 @@
 5. Token'lar AES-GCM şifreli; audit kaydı; en az yetki.
 
 ## Commit & branch
-1. Branch `claude/<isim>` üzerinde çalış (aktif: `claude/kind-galileo-ch08cg`).
+1. Geliştirme doğrudan **`main`** üzerinde (sahip kararı, 14.06.2026).
 2. Bir fazın işini tek mantıksal commit'te topla; açıklayıcı mesaj.
-3. Commit öncesi: lint + typecheck temiz. `main`'e doğrudan push yok.
-4. `git push -u origin <branch>`; ağ hatasında 2/4/8/16s backoff ile 4 deneme.
+3. Commit öncesi: lint + typecheck temiz.
+4. `git push -u origin main`; ağ hatasında 2/4/8/16s backoff ile 4 deneme.
 5. PR yalnızca açıkça istenince.

@@ -2,8 +2,7 @@
 
 - **İletişim dili:** Türkçe (dökümanlar ve sohbet). Kod/identifier İngilizce.
 - **Commit:** Açıklayıcı mesaj; bir fazın işi tek mantıksal commit'te.
-- **Branch:** `claude/<isim>`. `main`'e doğrudan push yok. Aktif branch:
-  `claude/kind-galileo-ch08cg`.
+- **Branch:** Geliştirme doğrudan **`main`** üzerinde (sahip kararı, 14.06.2026).
 - **PR:** Yalnızca açıkça istenince açılır.
 - **Kod standardı:** TypeScript **strict**, `any`'den kaçın; ESLint + Prettier;
   commit öncesi lint + typecheck temiz olmalı.

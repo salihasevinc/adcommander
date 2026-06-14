@@ -67,7 +67,7 @@ Birincil kullanıcı: **küçük/orta ajanslar** (çoklu-hesap yönetimi birinci
 - Deploy edilen kampanyalar için **rollback** bilgisini her zaman sakla.
 
 ## İş akışı
-- Geliştirme branch'i: `claude/<isim>` (örn. `claude/magical-babbage-70541n`). `main`'e doğrudan push yok.
+- Geliştirme doğrudan `main` üzerinde yapılır (sahip kararı, 14.06.2026).
 - Açıklayıcı commit mesajları; bir fazın işini tek mantıksal commit'te topla.
 - **Pull request yalnızca açıkça istenince** açılır.
 
