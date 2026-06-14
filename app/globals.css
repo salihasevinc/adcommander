@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Command Deck — brand */
+  --color-primary: #3A36DB;
+  --color-primary-hover: #2F2CB8;
+
+  /* Command Deck — semantic */
+  --color-positive: #0E9F6E;
+  --color-error: #DC2B3D;
+  --color-warning: #C77700;
+  --color-info: #1B7FD4;
+
+  /* Command Deck — surface */
+  --color-surface-0: #0D0F14;
+  --color-surface-1: #161920;
+  --color-surface-2: #1E222B;
+  --color-surface-3: #272C38;
+  --color-border: #2E3340;
+
+  /* Command Deck — text */
+  --color-text-primary: #F0F2F5;
+  --color-text-secondary: #9BA3B2;
+  --color-text-muted: #5C6375;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Layout */
+  --sidebar-width: 248px;
+  --topbar-height: 56px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-surface-0);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tabular numbers for all metrics */
+.metric, .tnum {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
