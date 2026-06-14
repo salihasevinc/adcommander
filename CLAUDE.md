@@ -7,6 +7,7 @@ Birincil kullanıcı: **küçük/orta ajanslar** (çoklu-hesap yönetimi birinci
 ## Hakikat kaynakları & akış
 - `@intent.md` → **tek hakikat kaynağı** (niyet sözleşmesi). Çelişki olursa **intent kazanır**.
 - `@plan.md` → v1/MVP yol haritası (mimari, modüller, fazlar).
+- `@design.md` → tasarım sistemi (Command Deck): renk, tipografi, layout, component spec, UX güvenlik kuralları.
 - Çalışma sırası: **intent → plan → kod**. Yeni iş, önce plan.md'deki bir faza bağlanmalı.
 - intent/plan ile çelişen kod yazma; gerekirse önce o dökümanı güncelle.
 
