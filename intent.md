@@ -17,7 +17,7 @@ Reklam hesaplarına bağlanıp kreatif ve metinleri optimize eden, Meta ve Googl
 ## Kullanıcı
 - **Birincil:** Performans pazarlama yürüten küçük/orta ajanslar ve freelance reklam uzmanları; çok sayıda hesabı elle yöneten ekipler. *(rol: kampanya yöneticisi / performans uzmanı)*
 - **İkincil:** Kendi reklamını yöneten e-ticaret KOBİ'leri. *(rol: işletme sahibi / pazarlamacı)*
-- *(Birincil kullanıcıyı netleştir — v1'in tüm ürün kararları bu role göre verilecek.)*
+- **Netleştirildi:** Birincil kullanıcı = küçük/orta ajanslar ve freelance performans uzmanları (çoklu-hesap yöneten ekipler). v1'in tüm ürün kararları bu role göre verilir.
 
 ## Başarı kriteri *(sayılabilir)*
 - Kullanıcı Meta ve Google reklam hesabını OAuth ile ≤ **10 dk** içinde bağlayabiliyor.
