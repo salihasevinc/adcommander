@@ -42,23 +42,34 @@ Hiçbir adım atlanamaz. Tek tık asla yeterli değil.
 
 ---
 
-## Kod yazma desenleri
+## AdCommander'a özgü domain protokolleri
 
-### Yeni bir API route eklerken
-1. `app/api/<kaynak>/route.ts` — App Router convention
-2. Girdi doğrulama (Zod veya benzeri) — sistem sınırında
-3. `lib/<domain>/` altında domain mantığı — route'ta iş mantığı yok
-4. Hata: kullanıcıya güvenli mesaj; ayrıntı sunucu logunda
+> Bunlar bu projeye özeldir — jenerik framework tarifi değil, AdCommander'ın
+> "para harcatan SaaS" doğasından doğan zorunlu desenler.
 
-### Yeni bir Prisma modeli eklerken
-1. `prisma/schema.prisma`'ya ekle
-2. `npx prisma migrate dev --name <açıklayıcı-ad>`
-3. Tip güvenliği: Prisma generate çıktısını kullan; elle tip uydurma yok
+### Reklam platformuna (Meta/Google) HER yazma
+- Doğrudan API çağrısı **yasak** — her yazma tek bir deploy kapısından (`lib/deploy/`) geçer.
+- O kapı zorunlu olarak: (1) `status=PAUSED` enjekte eder, (2) insan onayı flag'i kontrol eder,
+  (3) ortamı doğrular (dev → yalnızca sandbox token), (4) rollback meta'sını yazar, (5) audit'ler.
+- Bütçe/teklif **değiştiren** çağrı kod tabanında bulunmamalı — yalnızca öneri üretilir, uygulanmaz.
 
-### Arka plan işi (kuyruk) eklerken
-1. Uzun/rate-limit'li işler → senkron değil, kuyruk
-2. Retry + idempotency zorunlu (aynı iş iki kez tetiklenirse zarar vermemeli)
-3. Başarısız iş → audit log + kullanıcıya bildirim (sessiz başarısız olma)
+### Reklam hesabı token'ına HER erişim
+- Düz `connection.token` okuması yasak — tek bir helper (`lib/crypto/`) üzerinden AES-GCM çöz.
+- Token asla log/hata mesajı/exception payload'una girmez (sızıntı = kritik).
+- Her okuma/yenileme bir `AuditLog` satırı üretir; rotasyon refresh süresinden önce tetiklenir.
+
+### Kreatif/metin üretimi (LLM + görsel API)
+- Üretim çıktısı **doğrudan deploy edilemez** → önce policy ön-kontrol (yasaklı sektör/iddia),
+  sonra insan onay ekranı. ≥5 varyasyon zorunlu (başarı kriteri).
+- LLM/görsel çağrıları kuyruğa girer (rate-limit + maliyet); kullanıcı bazlı kota kontrol edilir.
+
+### Günlük metrik çekimi
+- Cron → kuyruk; hesap başına **idempotent** günlük `MetricSnapshot` (aynı gün iki kez = tek kayıt).
+- Çekilen metrik seti sabittir: spend, CTR, CPC, CPA/ROAS (dashboard bunları bekler).
+
+### Çoklu-tenant her sorgu
+- Her DB sorgusu `organizationId` ile kapsanmalı — bir ajans başka ajansın hesabını ASLA görmez.
+- Bu, route/lib seviyesinde unutulması en kolay ve en tehlikeli hatadır; her yeni sorguda doğrula.
 
 ---
 
