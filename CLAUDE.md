@@ -11,6 +11,18 @@ Birincil kullanıcı: **küçük/orta ajanslar** (çoklu-hesap yönetimi birinci
 - Çalışma sırası: **intent → plan → kod**. Yeni iş, önce plan.md'deki bir faza bağlanmalı.
 - intent/plan ile çelişen kod yazma; gerekirse önce o dökümanı güncelle.
 
+## 4 Katmanlı Bellek Sistemi
+Her oturumda otomatik yüklenen kalıcı katmanlar:
+- `@memory/semantic.md` → sabitlenmiş gerçekler: kararlar, veri modeli, tasarım özü, başarı kriterleri
+- `@memory/procedural.md` → iş akışları: çalışma sırası, güvenlik protokolü, kod desenleri, commit kuralları
+
+Kronolojik / geçici katmanlar (gerektiğinde oku):
+- `memory/episodic.md` → tamamlanan fazlar ve oturum tarihi
+- `memory/working.md` → aktif oturum ham gözlemleri (oturum sonunda konsolide et)
+
+**Konsolidasyon kuralı:** Yeni karar → `semantic.md` · Yeni protokol → `procedural.md` ·
+Faz bitti → `episodic.md` · Ham gözlem olgunlaştı → üst katmana taşı, `working.md`'den sil.
+
 ## Tech stack
 - **Next.js (App Router) + TypeScript** (web + API tek codebase).
 - **PostgreSQL + Prisma** (org/hesap/kampanya/metrik ilişkileri).
