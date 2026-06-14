@@ -7,8 +7,17 @@ Birincil kullanıcı: **küçük/orta ajanslar** (çoklu-hesap yönetimi birinci
 ## Hakikat kaynakları & akış
 - `@intent.md` → **tek hakikat kaynağı** (niyet sözleşmesi). Çelişki olursa **intent kazanır**.
 - `@plan.md` → v1/MVP yol haritası (mimari, modüller, fazlar).
+- `@DESIGN.md` → tasarım sistemi + ürün mimarisi kararları ("Command Deck").
 - Çalışma sırası: **intent → plan → kod**. Yeni iş, önce plan.md'deki bir faza bağlanmalı.
 - intent/plan ile çelişen kod yazma; gerekirse önce o dökümanı güncelle.
+
+## Ajan hafızası (`.memory/`)
+- Oturumlar arası kalıcı hafıza; agentmemory modelinden uyarlanmış dosya-tabanlı sistem.
+- **Oturum başında oku:** `.memory/slots/*` (persona/preferences/guidelines/context) → sonra
+  gerektiğinde `semantic/`, `procedural/`, `episodic/`.
+- **Anlamlı ilerlemede güncelle:** `slots/context.md` + ilgili `semantic/`/`procedural/`;
+  oturum sonunda `episodic/<tarih>-<konu>.md`. Kurallar: `.memory/README.md`.
+- Hakikat kaynağı değildir (intent kazanır); onları özetler. **Sır/token/PII yazma.**
 
 ## Tech stack
 - **Next.js (App Router) + TypeScript** (web + API tek codebase).
